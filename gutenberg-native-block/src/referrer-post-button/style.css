@@ -1,0 +1,14 @@
+/*
+ * Front-end and editor styles. Visual treatment (colors, radius, padding,
+ * typography) is intentionally left to block supports and the theme's
+ * `wp-element-button` styles, so the block inherits any theme's button look.
+ */
+.wp-block-digitallotus-referrer-post-button {
+	display: inline-block;
+}
+
+.wp-block-digitallotus-referrer-post-button a.wp-element-button {
+	cursor: pointer;
+	display: inline-block;
+	text-decoration: none;
+}

@@ -1,0 +1,30 @@
+{
+	"_comment": "Shared by PHPUnit (tests/php) and Jest (src/**/*.test.ts) so the server rule and the editor warning cannot drift apart.",
+	"patterns": [ "partner.example.com", "*.example.org" ],
+	"permitted": {
+		"exact host": "https://partner.example.com/landing",
+		"http": "http://partner.example.com/landing",
+		"host case-insensitive": "https://PARTNER.Example.com/landing",
+		"scheme case-insensitive": "HTTPS://partner.example.com/landing",
+		"port ignored": "https://partner.example.com:8443/landing",
+		"query and fragment": "https://partner.example.com/landing?a=1&b=2#top",
+		"fully qualified trailing dot": "https://partner.example.com./landing",
+		"wildcard, one level": "https://go.example.org/",
+		"wildcard, deeper": "https://eu.go.example.org/"
+	},
+	"refused": {
+		"unlisted host": "https://attacker.example.net/",
+		"subdomain of an exact entry": "https://www.partner.example.com/",
+		"parent of an exact entry": "https://example.com/",
+		"wildcard apex not included": "https://example.org/",
+		"wildcard suffix look-alike": "https://notexample.org/",
+		"allowlisted host as prefix": "https://partner.example.com.attacker.net/",
+		"allowlisted host in userinfo": "https://partner.example.com@attacker.net/",
+		"allowlisted host in path": "https://attacker.net/partner.example.com",
+		"scheme-relative": "//partner.example.com/landing",
+		"relative": "/landing",
+		"empty": "",
+		"javascript scheme": "javascript://partner.example.com/%0Aalert(1)",
+		"other scheme": "ftp://partner.example.com/"
+	}
+}

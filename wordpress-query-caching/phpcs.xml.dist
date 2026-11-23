@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<ruleset name="Cached Event Listings">
+	<description>
+		Security- and correctness-focused WordPress sniffs only. Formatting
+		is deliberately out of scope: the editor and reviews own style, and
+		a security ruleset that never argues about whitespace is one people
+		actually keep passing. Every finding from this file is worth fixing.
+	</description>
+
+	<file>cached-event-listings.php</file>
+	<file>src</file>
+
+	<arg value="sp"/>
+	<arg name="extensions" value="php"/>
+
+	<config name="minimum_wp_version" value="6.5"/>
+
+	<!-- Everything printed must pass through an escaping function. -->
+	<rule ref="WordPress.Security.EscapeOutput"/>
+
+	<!-- Request data must be unslashed, sanitized, and validated. -->
+	<rule ref="WordPress.Security.ValidatedSanitizedInput"/>
+
+	<!-- State-changing request handling must verify a nonce. Read-only view
+	     parameters are exempted inline, with the reasoning at the site. -->
+	<rule ref="WordPress.Security.NonceVerification"/>
+
+	<!-- No raw SQL without $wpdb->prepare(). -->
+	<rule ref="WordPress.DB.PreparedSQL"/>
+	<rule ref="WordPress.DB.PreparedSQLPlaceholders"/>
+
+	<!-- Translations must use the plugin's own text domain. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="cached-event-listings"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- No development functions (var_dump, error_log, ...) in shipped code. -->
+	<rule ref="WordPress.PHP.DevelopmentFunctions"/>
+</ruleset>

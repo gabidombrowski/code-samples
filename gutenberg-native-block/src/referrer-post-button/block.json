@@ -1,0 +1,58 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "digitallotus/referrer-post-button",
+	"version": "1.0.0",
+	"title": "Referrer POST Button",
+	"category": "design",
+	"icon": "admin-links",
+	"description": "A button that can deliver the referring page URL in the POST body, for destinations the Referer header no longer reaches.",
+	"keywords": [ "button", "link", "referrer" ],
+	"textdomain": "referrer-post-button",
+	"attributes": {
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"url": {
+			"type": "string",
+			"default": ""
+		},
+		"opensInNewTab": {
+			"type": "boolean",
+			"default": false
+		},
+		"postReferrer": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"spacing": {
+			"padding": true
+		},
+		"border": {
+			"radius": true
+		}
+	},
+	"example": {
+		"attributes": {
+			"text": "Get started",
+			"url": "https://example.com"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}
